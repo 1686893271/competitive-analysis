@@ -1,0 +1,12 @@
+[project]
+name = "competitive-analysis"
+version = "0.1.0"
+description = "多 Agent 竞品分析报告生成器 - 基于 CrewAI 框架"
+requires-python = ">=3.10"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

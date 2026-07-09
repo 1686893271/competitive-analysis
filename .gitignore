@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Virtual environment
+crewai-env/
+.venv/
+
+# Environment variables (contains API keys)
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Outputs
+competitive_analysis_report.md
