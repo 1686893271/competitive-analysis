@@ -449,3 +449,57 @@ whatsapp: {}
 ## 系统环境
 Python 3.11.15
 /root/.hermes/hermes-agent/venv/bin/python3
+
+## research Skill 结构示例
+/root/.hermes/skills/research/llm-wiki/SKILL.md
+/root/.hermes/skills/research/blogwatcher/SKILL.md
+/root/.hermes/skills/research/arxiv/SKILL.md
+/root/.hermes/skills/research/arxiv/scripts/search_arxiv.py
+/root/.hermes/skills/research/polymarket/SKILL.md
+/root/.hermes/skills/research/polymarket/scripts/polymarket.py
+/root/.hermes/skills/research/polymarket/references/api-endpoints.md
+/root/.hermes/skills/research/research-paper-writing/templates/README.md
+/root/.hermes/skills/research/research-paper-writing/templates/acl/README.md
+/root/.hermes/skills/research/research-paper-writing/templates/acl/acl_natbib.bst
+/root/.hermes/skills/research/research-paper-writing/templates/acl/anthology.bib.txt
+/root/.hermes/skills/research/research-paper-writing/templates/acl/acl_lualatex.tex
+/root/.hermes/skills/research/research-paper-writing/templates/acl/custom.bib
+/root/.hermes/skills/research/research-paper-writing/templates/acl/acl.sty
+/root/.hermes/skills/research/research-paper-writing/templates/acl/formatting.md
+/root/.hermes/skills/research/research-paper-writing/templates/acl/acl_latex.tex
+/root/.hermes/skills/research/research-paper-writing/templates/iclr2026/math_commands.tex
+/root/.hermes/skills/research/research-paper-writing/templates/iclr2026/iclr2026_conference.bst
+/root/.hermes/skills/research/research-paper-writing/templates/iclr2026/fancyhdr.sty
+/root/.hermes/skills/research/research-paper-writing/templates/iclr2026/iclr2026_conference.tex
+/root/.hermes/skills/research/research-paper-writing/templates/iclr2026/iclr2026_conference.sty
+/root/.hermes/skills/research/research-paper-writing/templates/iclr2026/iclr2026_conference.bib
+/root/.hermes/skills/research/research-paper-writing/templates/iclr2026/iclr2026_conference.pdf
+/root/.hermes/skills/research/research-paper-writing/templates/iclr2026/natbib.sty
+/root/.hermes/skills/research/research-paper-writing/templates/neurips2025/extra_pkgs.tex
+/root/.hermes/skills/research/research-paper-writing/templates/neurips2025/main.tex
+/root/.hermes/skills/research/research-paper-writing/templates/neurips2025/Makefile
+/root/.hermes/skills/research/research-paper-writing/templates/neurips2025/neurips.sty
+/root/.hermes/skills/research/research-paper-writing/templates/icml2026/icml2026.bst
+/root/.hermes/skills/research/research-paper-writing/templates/icml2026/example_paper.pdf
+
+## research Skill 的 manifest.yaml
+
+## github Skill 结构示例
+/root/.hermes/skills/github/github-auth/SKILL.md
+/root/.hermes/skills/github/github-auth/scripts/gh-env.sh
+/root/.hermes/skills/github/github-code-review/SKILL.md
+/root/.hermes/skills/github/github-code-review/references/review-output-template.md
+/root/.hermes/skills/github/github-repo-management/SKILL.md
+/root/.hermes/skills/github/github-repo-management/references/github-api-cheatsheet.md
+/root/.hermes/skills/github/github-pr-workflow/templates/pr-body-feature.md
+/root/.hermes/skills/github/github-pr-workflow/templates/pr-body-bugfix.md
+/root/.hermes/skills/github/github-pr-workflow/SKILL.md
+/root/.hermes/skills/github/github-pr-workflow/references/ci-troubleshooting.md
+/root/.hermes/skills/github/github-pr-workflow/references/conventional-commits.md
+/root/.hermes/skills/github/codebase-inspection/SKILL.md
+/root/.hermes/skills/github/DESCRIPTION.md
+/root/.hermes/skills/github/github-issues/templates/bug-report.md
+/root/.hermes/skills/github/github-issues/templates/feature-request.md
+/root/.hermes/skills/github/github-issues/SKILL.md
+
+## github Skill 的 manifest
