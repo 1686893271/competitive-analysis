@@ -1,0 +1,14 @@
+{
+    "name": "crypto_forecast_hourly",
+    "description": "BTC/ETH 价格预测 - 每小时运行",
+    "schedule": "0 * * * *",
+    "mode": "no-agent",
+    "command": "bash /path/to/crypto_forecast/run_forecast.sh",
+    "output": {
+        "type": "feishu",
+        "webhook_url": "https://open.feishu.cn/open-apis/bot/v2/hook/your-webhook-token"
+    },
+    "timeout": 120,
+    "retry": 2,
+    "retry_delay": 60
+}
