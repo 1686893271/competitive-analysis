@@ -1,25 +1,11 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-*.egg
-dist/
-build/
-
-# Virtual environment
-crewai-env/
-.venv/
-
-# Environment variables (contains API keys)
+venv/
 .env
-
-# IDE
-.vscode/
-.idea/
-
-# OS
+history.csv
+crypto_forecast.log
+__pycache__/
+*.pyc
+*.pyo
 .DS_Store
-Thumbs.db
-
-# Outputs
-competitive_analysis_report.md
+*.swp
+*.swo
+deploy.sh
