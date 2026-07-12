@@ -10,7 +10,9 @@ PROXY_URL = os.getenv("PROXY_URL")
 proxies = {"http": PROXY_URL, "https": PROXY_URL} if PROXY_URL else None
 
 
-def send_feishu_message(title: str, content: str) -> bool:
+def send_feishu_message(title: str, content: str):
+    if os.getenv("CRON_MODE") == "1":
+        return  # 定时模式，静默运行，不发飞书
     if not FEISHU_WEBHOOK_URL:
         print("飞书 Webhook 未配置")
         return False
