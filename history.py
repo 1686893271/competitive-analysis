@@ -67,24 +67,8 @@ def write_prediction(coin_type: str, price: float, direction: str, direction_sco
 
 
 def update_last_actual_price(actual_price: float):
-    if not os.path.exists(HISTORY_FILE):
-        return
-
-    with open(HISTORY_FILE, "r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        rows = list(reader)
-
-    if not rows:
-        return
-
-    rows[-1]["actual_price"] = actual_price
-
-    with open(HISTORY_FILE, "w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
-        writer.writeheader()
-        writer.writerows(rows)
-
-    print(f"上条预测的实际价格已更新: ${actual_price:,.2f}")
+    """已废弃 - actual_price 由下一小时验证时自动填充"""
+    pass
 
 
 def get_last_prediction(coin_type: str = None) -> dict:

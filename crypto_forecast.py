@@ -67,8 +67,6 @@ def run_forecast(coin_type: str = "btc") -> dict:
     range_desc = get_range_width_description(range_data["width"])
     print(f"✓ 波动区间预测: ${range_data['lower']:,.2f} ~ ${range_data['upper']:,.2f} ({range_desc})")
 
-    update_last_actual_price(price)
-
     write_prediction(
         coin_type=coin_type,
         price=price,
