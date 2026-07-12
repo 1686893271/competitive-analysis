@@ -3,8 +3,7 @@
 # 用法: bash run_hourly.sh
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV_PYTHON="$SCRIPT_DIR/../crypto_report/venv/bin/python3"
-PYTHON="${VENV_PYTHON:-$SCRIPT_DIR/venv/bin/python3}"
+PYTHON="/root/vpn-auto/crypto_report/venv/bin/python3"
 CRON_LINE="0 * * * * cd $SCRIPT_DIR && $PYTHON crypto_forecast.py >> $SCRIPT_DIR/cron.log 2>&1"
 
 echo "=== BTC/ETH 定时任务安装 ==="
