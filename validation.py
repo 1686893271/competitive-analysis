@@ -85,10 +85,10 @@ def analyze_rules(lookback_days: int = 7) -> dict:
             direction_stats[direction] = {"total": 0, "correct": 0}
         direction_stats[direction]["total"] += 1
 
-        actual_price = float(row.get("actual_price", 0))
-        predicted_lower = float(row.get("predicted_lower", 0))
-        predicted_upper = float(row.get("predicted_upper", 0))
-        predicted_price = float(row.get("price", 0))
+        actual_price = float(row.get("actual_price") or 0)
+        predicted_lower = float(row.get("predicted_lower") or 0)
+        predicted_upper = float(row.get("predicted_upper") or 0)
+        predicted_price = float(row.get("price") or 0)
 
         in_range = predicted_lower <= actual_price <= predicted_upper
 
@@ -114,8 +114,8 @@ def analyze_rules(lookback_days: int = 7) -> dict:
         }
 
     total_predictions = len(recent_rows)
-    range_correct = sum(1 for row in recent_rows if float(row.get("actual_price", 0)) > 0 and
-                        float(row.get("predicted_lower", 0)) <= float(row.get("actual_price", 0)) <= float(row.get("predicted_upper", 0)))
+    range_correct = sum(1 for row in recent_rows if float(row.get("actual_price") or 0) > 0 and
+                        float(row.get("predicted_lower") or 0) <= float(row.get("actual_price") or 0) <= float(row.get("predicted_upper") or 0))
 
     return {
         "lookback_days": lookback_days,
