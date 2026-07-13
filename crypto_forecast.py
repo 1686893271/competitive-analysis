@@ -40,9 +40,9 @@ def run_forecast(coin_type: str = "btc") -> dict:
         return {"error": str(e)}
 
     if coin_type == "btc":
-        klines = fetch_btc_1h_klines(limit=48)
+        klines = fetch_btc_1h_klines(limit=120)
     else:
-        klines = fetch_eth_1h_klines(limit=48)
+        klines = fetch_eth_1h_klines(limit=120)
 
     if not klines:
         print("✗ K线数据获取失败")
