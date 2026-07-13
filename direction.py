@@ -1,13 +1,18 @@
 from indicators import (
     calc_rsi, calc_vwap, calc_bollinger_bands, calc_kline_momentum, calc_ema,
-    calc_macd, calc_obv_trend, calc_volume_ratio,
+    calc_macd, calc_obv_trend, calc_volume_ratio, calc_atr_percentile,
 )
 
 
 def score_direction(klines: list, price: float) -> int:
-    """综合评分：各指标一致性越多，方向越可靠。满分为 ±12 分。"""
+    """综合评分：各指标一致性越多，方向越可靠。满分为 ±14 分。"""
     if len(klines) < 14:
         return 0
+
+    # === 低波动过滤：波动极低时直接强制 neutral ===
+    atr_pct = calc_atr_percentile(klines)
+    if atr_pct < 30:
+        return 0  # 低波动不预判方向
 
     rsi = calc_rsi(klines)
     vwap = calc_vwap(klines)
@@ -93,14 +98,11 @@ def score_direction(klines: list, price: float) -> int:
 
 
 def interpret(score: int) -> str:
-    if score >= 5:
+    """评分阈值上调，减少假信号。≥6 才算明确方向，否则 neutral。"""
+    if score >= 6:
         return "bullish"
-    elif score >= 3:
-        return "bullish_weak"
-    elif score <= -5:
+    elif score <= -4:
         return "bearish"
-    elif score <= -3:
-        return "bearish_weak"
     else:
         return "neutral"
 
@@ -109,23 +111,21 @@ def get_direction_confidence(score: int, direction: str) -> float:
     """
     置信度：基于指标一致性强弱。
     neutral 固定 74%（没有方向信号时不操作）。
-    有方向时，分数绝对值越大置信度越高，最高约 85%。
+    有方向时，分数绝对值越大置信度越高，最高约 88%。
     """
     if direction == "neutral":
         return 0.74
 
-    # 分数映射到置信度：|score|=3 → 0.60, |score|>=8 → 0.85
-    normalized = min(abs(score) - 2, 6) / 6.0  # 0.0 ~ 1.0
-    confidence = 0.60 + normalized * 0.25
+    # 分数映射到置信度：|score|=4 → 0.60, |score|≥8 → 0.88
+    normalized = min(abs(score) - 3, 5) / 5.0  # 0.0 ~ 1.0
+    confidence = 0.60 + normalized * 0.28
     return round(confidence, 2)
 
 
 def get_direction_description(direction: str) -> str:
     descriptions = {
-        "bullish": "强烈看多（多指标共振）",
-        "bullish_weak": "温和看多（部分指标支持）",
-        "bearish": "强烈看空（多指标共振）",
-        "bearish_weak": "温和看空（部分指标支持）",
-        "neutral": "中性（指标分歧，无明确方向）",
+        "bullish": "明确看多（多指标共振）",
+        "bearish": "明确看空（多指标共振）",
+        "neutral": "中性（低波动或指标分歧，不预判方向）",
     }
     return descriptions.get(direction, "未知")
